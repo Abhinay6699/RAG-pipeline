@@ -22,5 +22,5 @@ COPY . /app/
 # Pre-download the HuggingFace embedding model into the Docker image so it doesn't timeout on the first request
 RUN python -c "from langchain_huggingface import HuggingFaceEmbeddings; HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2', model_kwargs={'device': 'cpu'})"
 
-# Start the application using Flask's built-in server (listens on PORT)
-CMD ["python", "app.py"]
+# Start the application with Gunicorn, binding to the platform's dynamic PORT (or 5000 fallback)
+CMD gunicorn --bind :${PORT:-5000} --workers 1 --threads 4 --access-logfile - app:app
