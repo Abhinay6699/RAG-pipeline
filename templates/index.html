@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAG Document QA — semantic search and grounded answers over your document corpus.">
+    <title>Document QA — Retrieval-Augmented Research</title>
+
+    <!-- Fonts: Source Serif 4, Inter, IBM Plex Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- ── Header ──────────────────────────────────────────────── -->
+    <header id="app-header">
+        <div class="header-inner">
+            <h1 id="app-title">Document QA</h1>
+            <span class="header-subtitle">Retrieval-Augmented Research</span>
+            <div class="header-status" id="health-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text" id="status-text">Connecting...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Main layout ─────────────────────────────────────────── -->
+    <main id="app-main">
+        <!-- ── Sidebar: Documents ──────────────────────────────── -->
+        <aside id="sidebar">
+            <section class="sidebar-section" id="upload-section">
+                <h2 class="section-heading">Ingest Document</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <label for="file-input" class="file-label" id="file-label">
+                        <span class="file-label-icon">+</span>
+                        <span class="file-label-text" id="file-label-text">Choose PDF, TXT, or DOCX</span>
+                    </label>
+                    <input type="file" id="file-input" name="file" accept=".pdf,.txt,.docx" hidden>
+                    <button type="submit" class="btn btn-primary" id="upload-btn" disabled>Upload &amp; Index</button>
+                </form>
+                <div class="upload-feedback" id="upload-feedback"></div>
+            </section>
+
+            <section class="sidebar-section" id="documents-section">
+                <h2 class="section-heading">Indexed Documents</h2>
+                <div id="document-list" class="document-list">
+                    <p class="empty-state" id="no-docs-msg">No documents ingested yet.</p>
+                </div>
+            </section>
+        </aside>
+
+        <!-- ── Main panel: Query interface ─────────────────────── -->
+        <div id="query-panel">
+            <div id="results-area">
+                <div class="welcome-message" id="welcome-msg">
+                    <h2>Research your documents</h2>
+                    <p>Upload documents in the sidebar, then ask questions below. Answers are grounded in your uploaded corpus with full source citations.</p>
+                </div>
+            </div>
+
+            <form id="query-form" class="query-bar">
+                <input
+                    type="text"
+                    id="query-input"
+                    name="question"
+                    placeholder="Ask a question about your documents..."
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit" class="btn btn-primary" id="query-btn">Search</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

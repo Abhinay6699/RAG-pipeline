@@ -1,0 +1,29 @@
+# ── Core framework ────────────────────────────────────────────────────
+flask==3.1.1
+python-dotenv==1.1.0
+
+# ── LangChain ecosystem (current split-package structure) ─────────────
+langchain-core==0.3.62
+langchain-text-splitters==0.3.8
+langchain-community==0.3.24
+langchain-huggingface==0.2.0
+
+# ── Embeddings ────────────────────────────────────────────────────────
+sentence-transformers==4.1.0
+huggingface-hub==0.33.1
+
+# ── Vector store ──────────────────────────────────────────────────────
+faiss-cpu==1.11.0
+
+# ── Sparse retrieval ─────────────────────────────────────────────────
+rank-bm25==0.2.2
+
+# ── LLM inference ────────────────────────────────────────────────────
+groq==0.25.0
+
+# ── Document parsing ─────────────────────────────────────────────────
+PyPDF2==3.0.1
+python-docx==1.1.2
+
+# ── Testing ───────────────────────────────────────────────────────────
+pytest==8.4.1
