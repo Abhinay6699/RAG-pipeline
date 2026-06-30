@@ -19,8 +19,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . /app/
 
-# Expose port 5000
+# Expose port (used for local testing)
 EXPOSE 5000
 
-# Start the application with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "1", "--threads", "4", "app:app"]
+# Start the application with Gunicorn, binding to the platform's dynamic PORT (or 5000 fallback)
+CMD gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 1 --threads 4 app:app
