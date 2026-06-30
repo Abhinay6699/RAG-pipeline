@@ -83,6 +83,15 @@ python app.py
 
 The app starts at `http://localhost:5000`.
 
+### Deploying to Production
+
+This repository is fully containerized and ready for cloud deployment. It uses `gunicorn` to serve the Flask app in production.
+
+1. Create a free account on [Render](https://render.com) or [Railway](https://railway.app).
+2. Connect your GitHub repository.
+3. Add `GROQ_API_KEY` to the Environment Variables settings.
+4. Deploy! The platforms will automatically detect the `Dockerfile` and build your web service.
+
 ### Run Tests
 
 ```bash
